@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Just For You 🤍</title>
+
+  <meta name="robots" content="noindex, nofollow">
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --pink-1: #ff9ecf;
+      --pink-2: #ffd1e8;
+      --purple-1: #cdb4ff;
+      --white-soft: #fffafc;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      background: linear-gradient(135deg, var(--pink-1), var(--purple-1), var(--pink-2));
+      font-family: 'Quicksand', sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      padding: 20px;
+    }
+
+    body.night {
+      background: linear-gradient(135deg, #2b2d6e, #3b1d4a);
+    }
+
+    .container {
+      max-width: 800px;
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(10px);
+      border-radius: 24px;
+      padding: 40px 30px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+      text-align: center;
+      position: relative;
+      z-index: 1;
+      animation: pulse 3s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.02); }
+    }
+
+    h1 {
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--white-soft);
+      margin-bottom: 25px;
+    }
+
+    section {
+      margin-bottom: 22px;
+    }
+
+    p {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--white-soft);
+      line-height: 1.8;
+    }
+
+    .signature {
+      margin-top: 30px;
+      font-size: 1.1rem;
+      font-weight: 700;
+    }
+
+    .fade-in {
+      opacity: 0;
+      animation: cinematicFade 6s ease-out forwards;
+      animation-delay: 3s;
+    }
+
+    @keyframes cinematicFade {
+      from { opacity: 0; transform: translateY(12px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .badge {
+      margin-top: 14px;
+      display: inline-block;
+      padding: 6px 14px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.25);
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .heart {
+      position: absolute;
+      font-size: 28px;
+      animation: float 6s linear infinite;
+      opacity: 0.9;
+    }
+
+    @keyframes float {
+      from { transform: translateY(110vh); opacity: 0; }
+      to { transform: translateY(-10vh); opacity: 1; }
+    }
+
+    .sparkle {
+      position: absolute;
+      width: 6px;
+      height: 6px;
+      background: rgba(255,255,255,0.8);
+      border-radius: 50%;
+      animation: sparkle 4s ease-in-out infinite;
+    }
+
+    @keyframes sparkle {
+      0%,100% { opacity: 0; transform: scale(0.5); }
+      50% { opacity: 1; transform: scale(1); }
+    }
+
+    .music-control {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: rgba(255,255,255,0.25);
+      backdrop-filter: blur(10px);
+      border-radius: 999px;
+      padding: 10px 16px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #fff;
+      cursor: pointer;
+      z-index: 5;
+    }
+
+    .toggle {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      cursor: pointer;
+      font-size: 1.1rem;
+      z-index: 5;
+    }
+
+    /* Password Screen */
+    #lockScreen {
+      position: fixed;
+      inset: 0;
+      background: linear-gradient(135deg,#ff9ecf,#cdb4ff);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Cute Password Gate -->
+<div id="lockScreen">
+  <div style="background:rgba(255,255,255,0.25); backdrop-filter:blur(12px); padding:30px 26px; border-radius:24px; text-align:center; max-width:320px; color:#fff;">
+    <h2>💗 Just for you</h2>
+    <p style="font-size:0.9rem; margin:14px 0;">Enter our secret word 🌸</p>
+    <input id="passInput" type="password" placeholder="our secret word" style="width:100%; padding:10px 14px; border-radius:999px; border:none;">
+    <br><br>
+    <button onclick="unlock()" style="padding:8px 18px; border:none; border-radius:999px; background:#fff; color:#d63384; font-weight:700;">Open 💌</button>
+    <p id="error" style="margin-top:10px; font-size:0.8rem; display:none;">Hmm… that’s not it 🤍</p>
+  </div>
+</div>
+
+<div class="container">
+  <h1>❤️ My Love, Please Stay ❤️</h1>
+
+  <section><p id="typed"></p></section>
+
+  <section><p>Every beat of my heart is for you and I really hope you know that well jaan.</p></section>
+
+  <section><p>Remember amra bolechilam ei bonding forever er jonno.</p></section>
+
+  <p class="signature">Tomar ekmatro Bhalobasha,<br>Tmr Panda and Tmr Jaantush 💕</p>
+
+  <p class="signature fade-in" style="font-size:0.95rem;">
+    I love you the most my partner and I will always love and respect you please don't leave this kid :")
+  </p>
+
+  <div class="badge">Always yours 🤍</div>
+</div>
+
+<div class="music-control" id="musicBtn">🎧 tap for music</div>
+<div class="toggle" onclick="document.body.classList.toggle('night')">🌙</div>
+
+<iframe id="ytPlayer" width="0" height="0"
+  src="https://www.youtube.com/embed/--txgg1KI68?enablejsapi=1&loop=1&playlist=--txgg1KI68"
+  allow="autoplay"
+  style="display:none;"></iframe>
+
+<script>
+  const SECRET = "jaantush";
+
+  function unlock() {
+    const input = document.getElementById('passInput').value.toLowerCase();
+    if (input === SECRET) {
+      document.getElementById('lockScreen').style.display = 'none';
+    } else {
+      document.getElementById('error').style.display = 'block';
+    }
+  }
+
+  // Typing
+  const text = "Amar Jaantush,";
+  let i = 0;
+  const typed = document.getElementById('typed');
+  function type() {
+    if (i < text.length) {
+      typed.textContent += text.charAt(i++);
+      setTimeout(type, 120);
+    }
+  }
+  setTimeout(type, 1000);
+
+  // Sparkles
+  setInterval(() => {
+    const s = document.createElement('div');
+    s.className = 'sparkle';
+    s.style.left = Math.random() * 100 + 'vw';
+    s.style.top = Math.random() * 100 + 'vh';
+    document.body.appendChild(s);
+    setTimeout(() => s.remove(), 4000);
+  }, 800);
+
+  // Hearts
+  const emojis = ['❤️','💗','🌸','🫶'];
+  setInterval(() => {
+    const h = document.createElement('div');
+    h.className = 'heart';
+    h.textContent = emojis[Math.floor(Math.random()*emojis.length)];
+    h.style.left = Math.random() * 100 + 'vw';
+    document.body.appendChild(h);
+    setTimeout(() => h.remove(), 7000);
+  }, 500);
+
+  // Music
+  const btn = document.getElementById('musicBtn');
+  const yt = document.getElementById('ytPlayer');
+  let playing = false;
+  btn.onclick = () => {
+    if (!playing) {
+      yt.src += "&autoplay=1";
+      btn.textContent = "🎶 playing";
+      playing = true;
+    }
+  };
+</script>
+
+</body>
+</html>
